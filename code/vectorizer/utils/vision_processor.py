@@ -11,7 +11,7 @@ class VisionProcessor:
     """
     Handles multimodal document processing (text extraction from images).
     """
-    def __init__(self, model_id='google/gemma-3-12b-it', device="cuda:0"):
+    def __init__(self, model_id='google/gemma-3-4b-it', device="cuda:0"):
         self.device = device
         
         logging.info(f"Loading multimodal model: {model_id}...")

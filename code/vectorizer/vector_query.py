@@ -24,7 +24,7 @@ class VectorQuerySystem:
     """
     
     def __init__(self, 
-                 chroma_db_dir: str = "../vector_dbs/dev_dbs/",
+                 chroma_db_dir: str = "../vector_dbs/data_conclusion",
                  embedding_model_name: str = "BAAI/bge-m3",
                  reranker_model_name: str = "BAAI/bge-reranker-v2-m3",
                  model_kwargs: dict = {'device': 'cuda:0'},
@@ -308,7 +308,7 @@ def interactive_query_mode(query_system: VectorQuerySystem):
                 continue
             
             # 解析查詢參數
-            top_k = 5
+            top_k = 5 
             initial_k = 50
             query_parts = user_input.split(':')
             user_query = query_parts[0].strip()
@@ -336,11 +336,13 @@ def interactive_query_mode(query_system: VectorQuerySystem):
 def main():
     """主函數"""
     parser = argparse.ArgumentParser(description='向量資料庫查詢系統 (整合 Reranker)')
-    parser.add_argument('--chroma_db_dir', type=str, default=r"D:\ArtificialIntelligenceCustomerService\vector_dbs\dev_dbs\tea_preview_list\cs_2048_co_10_min_1500",
+
+    parser.add_argument('--chroma_db_dir', type=str, 
+                        default=r"D:\ArtificialIntelligenceCustomerService\vector_dbs\data_conclusion",
                         help='向量資料庫目錄，預設為 "../vector_dbs/dev_dbs/"')
     parser.add_argument('--query', type=str, default=None,
                         help='直接執行查詢而不進入互動模式')
-    parser.add_argument('--top_k', type=int, default=5,
+    parser.add_argument('--top_k', type=int, default=10,
                         help='最終返回結果數量，預設為5')
     parser.add_argument('--initial_k', type=int, default=50,
                         help='初始向量搜索的候選集數量，預設為50')

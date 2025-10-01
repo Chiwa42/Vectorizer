@@ -61,6 +61,11 @@ class ExecutionLogger:
             f.write(skip_msg + "\n")
         
         logging.info(skip_msg)
+
+    def write_to_log(self, content: str):
+        """將任意內容寫入日誌文件"""
+        with open(self.log_file, 'a', encoding='utf-8') as f:
+            f.write(content + "\n")
     
     def finalize_log(self, success_count: int, fail_count: int, skip_count: int):
         """完成日誌記錄"""
@@ -77,10 +82,7 @@ class ExecutionLogger:
 警告總數: {len(self.warnings)} 個
 
 {"=" * 60}
-執行摘要完成
 """
-        
-        with open(self.log_file, 'a', encoding='utf-8') as f:
-            f.write(summary)
+        self.write_to_log(summary)
         
         logging.info(f"執行日誌已保存至: {self.log_file}")
