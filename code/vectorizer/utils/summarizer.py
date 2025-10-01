@@ -13,7 +13,7 @@ class Summarizer:
     """
     負責使用大型語言模型對文本塊進行摘要。
     """
-    def __init__(self, model_id="google/gemma-3-12b-it", device="cuda:0"):
+    def __init__(self, model_id="google/gemma-3-4b-it", device="cuda:0"):
         self.device = device
         logging.info(f"正在載入摘要模型: {model_id}...")
         try:
